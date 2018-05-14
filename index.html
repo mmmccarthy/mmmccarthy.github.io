@@ -2,261 +2,180 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Michael McCarthy Web Design</title>
+    <title>Michael McCarthy</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Add custom CSS here -->
-    <link href="./css/stylish-portfolio.css" rel="stylesheet">
-    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300|Roboto+Slab:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
-<body>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-    <!-- Side Menu -->
-    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand"><a href="http://mmccarthy.github.io">Michael McCarthy</a>
-            </li>
-            <li><a href="#top">Home</a>
-            </li>
-            <li><a href="#about">About</a>
-            </li>
-            <li><a href="#services">Services</a>
-            </li>
-            <li><a href="#portfolio">Portfolio</a>
-            </li>
-            <li><a href="#contact">Contact</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /Side Menu -->
-
-    <!-- Full Page Image Header Area -->
-    <div id="top" class="header">
-        <div class="vert-text">
-            <h1>Michael McCarthy Web Design</h1>
-            <p>&nbsp;</p>
-            <p><a href="#about"><i class="fa fa-chevron-circle-down fa-inverse fa-3x"></i></a></p>
-        </div>
-    </div>
-    <!-- /Full Page Image Header Area -->
-
-    <!-- Intro -->
-    <div id="about" class="intro">
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                    <h2>Launch a new website. Boost your business.</h2>
-                    <p class="lead">Your website reflects your business.<br/>Shouldn't you be in control?</p>
-                    <p>I'll give you the tools to manage your website, your way.</p>
-                </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-home"></i> Michael McCarthy
+                </a>
             </div>
-        </div>
-    </div>
-    <!-- /Intro -->
 
-    <!-- Services -->
-    <div id="services" class="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 text-center">
-                    <h2>Services</h2>
-                    <hr>
-                </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#projects">Projects</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <div class="row">
-                <div class="col-md-2 col-md-offset-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-mobile"></i>
-                        <h4>Fresh, Phone-friendly Design</h4>
-                        <p>I use the latest web technologies to ensure that your site looks great on desktops, smartphones, and tablets so your customers can find you from anywhere.</p>
-                    </div>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-home"></i>
-                        <h4>Neighborhood focus</h4>
-                        <p>I'll meet with you and get to know your business. You won't get a cookie-cutter design and price. Instead, we'll discuss what's best for you and your business.</p>
-                    </div>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-wrench"></i>
-                        <h4>Easy Publishing</h4>
-                        <p>I believe that you should always control what's on your site. Publishing content to your new website will be as easy as using a word processor.</p>
-                    </div>
-                </div>
-                <div class="col-md-2 text-center">
-                    <div class="service-item">
-                        <i class="service-icon fa fa-camera"></i>
-                        <h4>Photography and more</h4>
-                        <p>I'll take new photos of your space or your work, so your site can look its best.</p>
-                    </div>
-                </div>
-            </div>
+            <!-- /.navbar-collapse -->
         </div>
-    </div>
-    <!-- /Services -->
+        <!-- /.container -->
+    </nav>
 
-    <!-- Callout -->
-    <div class="callout">
-        <div class="vert-text">
-            <h1>The Web. Your Way.</h1>
-        </div>
-    </div>
-    <!-- /Callout -->
-
-    <!-- Portfolio -->
-    <div id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 text-center">
-                    <h2>Work</h2>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-2 text-center">
-                    <div class="portfolio-item">
-                        <a href="http://numun.org">
-                            <img class="img-portfolio img-responsive" src="img/mmcportfolio-1.png">
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Michael McCarthy</h1>
+                        <p class="intro-text"><strong>Chicago</strong><br>Urban Planning | Web Design | Photography</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
                         </a>
-                        <h4>Northwestern University Model United Nations</h4>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="portfolio-item">
-                        <a href="http://michaelmcc.com">
-                            <img class="img-portfolio img-responsive" src="img/mmcportfolio-2.jpg">
-                        </a>
-                        <h4>My Journalism Portfolio</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-2 text-center">
-                    <div class="portfolio-item">
-                        <a href="http://projects.knightlab.com/projects/datatrack">
-                            <img class="img-portfolio img-responsive" src="img/mmcportfolio-3.jpg">
-                        </a>
-                        <h4>DataTrack Chicago</h4>
-                    </div>
-                </div>
-                <div class="col-md-4 text-center">
-                    <div class="portfolio-item">
-                        <a href="http://wordpress.org">
-                            <img class="img-portfolio img-responsive" src="img/mmcportfolio-4.jpg">
-                        </a>
-                        <h4>WordPress Customization available</h4>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /Portfolio -->
+    </header>
 
-    <!-- Call to Action
-    <div class="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                    <h3>The buttons below are impossible to resist.</h3>
-                    <a href="#" class="btn btn-lg btn-default">Click Me!</a>
-                    <a href="#" class="btn btn-lg btn-primary">Look at Me!</a>
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>About Michael</h2>
+                <h4>Education</h4>
+                <p>Michael will attend the begin the Masters program in Urban Planning and Policy in Fall 2017 at the University of Illinois at Chicago (UIC). He holds a Bachelor of Science in Journalism from the Medill School of Journalism, Media, Integrated Marketing Communications at Northwestern University.</p>
+                <h4>Work</h4>
+                <p>Michael has interned at <a href="http://www.newsy.com/">Newsy</a>, an online video news company, and <a href="https://www.cityofchicago.org/city/en/depts/dca.html">Chicago's Department of Cultural Affairs and Special Events</a>, where he worked on the Farmers Markets program.</p>
+                <p>Michael currently works at Lottie's Pub in Chicago and volunteers with <a href="http://numun.org">Northwestern University Model United Nations</a> and <a href="http://www.cimun.org/">Chicago International Model United Nations</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="content-section text-center">
+        <div class="projects-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Projects</h2>
+                    <h4>NUMUN Portal</h4>
+					<h4>Newsy Experts Series</h4>
+                    <h4>Farmers Market Toolkit</h4>
+                    <h4>DCASE WordPress</h4>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /Call to Action -->
-
-    <!-- Contact -->
-    <div id="contact" class="call-to-action">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-md-offset-4 text-center">
-                    <h2>Let's get in touch</h2>
-                    <hr>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Skills</h2>
+                    <h4>Web Design/Development</h4>
+                    <p>Michael is a self-taught web developer with several years of experience tinkering with web projects. He is proficient in <strong>HTML, CSS, JavaScript/jQuery, PHP, and MySQL</strong>. He is currently learning Ruby on Rails.</p>
+                    
+                    <h4>Video Editing and Motion Graphics</h4>
+                    <p>Michael can edit a basic news package on deadline using either Final Cut Pro X or Adobe Premiere. He can also create custom motion graphics in Apple Motion.</p>
                 </div>
-				<div class="col-md-2 col-md-offset-4">
-					<a href="#" class="btn btn-lg btn-success"><i class="fa fa-phone fa-inverse"></i>&nbsp;&nbsp;Call Me</a>
-				</div>
-				<div class="col-md-2">
-					<a href="#" class="btn btn-lg btn-success"><i class="fa fa-comments fa-inverse"></i>&nbsp;&nbsp;Email Me</a>
-				</div>
-			</div>
-		</div>
-    </div>
-    <!-- /Contact -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact Start Bootstrap</h2>
+                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map"></div>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                    <!--<ul class="list-inline">
-                        <li><i class="fa fa-facebook fa-3x"></i>
-                        </li>
-                        <li><i class="fa fa-twitter fa-3x"></i>
-                        </li>
-                        <li><i class="fa fa-dribbble fa-3x"></i>
-                        </li>
-                    </ul>-->
-                    
-                    <hr>
-                    <p>Copyright &copy; 2014 Michael McCarthy</p>
-                    <p>&nbsp;</p>
-                    <div class="top-scroll">
-                        <a href="#top"><i class="fa fa-arrow-circle-up fa-3x"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="container text-center">
+            <p>Copyright &copy; Your Website 2016</p>
         </div>
     </footer>
-    <!-- /Footer -->
 
-    <!-- JavaScript -->
-    <script src="./js/jquery-1.10.2.js"></script>
-    <script src="./js/bootstrap.js"></script>
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
 
-    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
-    <script>
-    $("#menu-close").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    </script>
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
-    });
-    </script>
-    <script>
-    $(function() {
-        $('a[href*=#]:not([href=#])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
-                }
-            }
-        });
-    });
-    </script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/grayscale.min.js"></script>
 
 </body>
 
