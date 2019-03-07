@@ -15,6 +15,8 @@
 	integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
 	crossorigin=""></script>
 
+	<script src="./maps/wardsbfi4326.js"></script>
+
 	<script type="text/javascript">
 		var map;
 		var ajaxRequest;
@@ -34,12 +36,12 @@
 			// start the map in South-East England
 			map.setView(new L.LatLng(41.87,-87.62),9);
 			map.addLayer(osm);
-		}
-
-		function addjson() {
-			var bfiward = jQuery.get('./maps/wardsbfi.geojson');
-			//Add Bike Facilities Index (Wards) Layer
-			L.geoJSON(bfiward).addTo(map);
+			
+			if(bfiward){
+				L.geoJSON(bfiward).addTo(map);
+			}else{
+				console.log("Didn't load bfiward")
+			}
 		}
 	</script>
     
@@ -107,7 +109,6 @@
   			<div class="col-md-6">
   				<h3>Map</h3>
   				<div id="map"></div>
-  				<button type="button" class="btn btn-primary" onclick="addjson()">Load BFI</button>
   				<p>Thank you.</p>
   			</div>
   		</div>
