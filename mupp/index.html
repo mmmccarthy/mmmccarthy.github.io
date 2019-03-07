@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ward Superintendant</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:400|Roboto:400,300' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+	integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	crossorigin=""/>
+
+	<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+	integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+	crossorigin=""></script>
+
+	<script type="text/javascript">
+		var map;
+		var ajaxRequest;
+		var plotlist;
+		var plotlayers=[];
+		
+
+		function initmap() {
+			// set up the map
+			map = new L.Map('map');
+
+			// create the tile layer with correct attribution
+			var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+			var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
+			var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 12, attribution: osmAttrib});		
+
+			// start the map in South-East England
+			map.setView(new L.LatLng(41.87,-87.62),9);
+			map.addLayer(osm);
+		}
+
+		function addjson() {
+			var bfiward = jQuery.get('./maps/wardsbfi.geojson');
+			//Add Bike Facilities Index (Wards) Layer
+			L.geoJSON(bfiward).addTo(map);
+		}
+	</script>
+    
+    <style type="text/css">
+    	/* Font Styles */
+    	/* Headings */
+    	h1, h1.page-header, h2, h3, h4, h5, ul.nav > li, a.btn, button, th, label {
+			font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+		}
+		h1, h2, h3, h4, h5 {
+			text-transform: none;
+		}
+		
+		/* Body Text */
+		p, p.lead, li, span, td, input, select, option, textarea, div.alert, a, .tooltip-inner, div.dataTables_info {
+			/* font-family: 'Avenir'; */
+			/* font-family: 'Noto Sans', Georgia, serif; */
+			font-family: 'Roboto', Georgia, serif;
+		}
+		
+		/* Header */
+		.portal-header{
+			margin-top: 0.75em;
+			/* margin-bottom: 1em; */
+		}
+		
+		.portal-img{
+			float: left;
+			padding-right: 1em;
+		}
+		
+		div.portal-header-row{
+			margin-bottom: 15px;
+		}
+	
+		.numun-logo-word {
+			font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif;
+			font-weight: 400;
+		}
+
+		div#map {
+			height: 300px;
+		}
+    </style>
+  </head>
+
+  <body class="bg-light" onload="initmap();">
+
+	<div class="container">
+		<div class="row">
+		  <div class="col text-center">
+			  <!--<img class="portal-img" src="#" height="95" />-->
+			  <h1><i class="fas fa-wrench fa-lg text-info"></i></h1>
+			  <h1>Bike Equity Report</h1>
+			  <hr />
+		  </div>
+		</div>
+	</div>
+
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-md-6">
+  				<p class="lead">Make Chicago a safer place to bike</p>
+  			</div>
+  			<div class="col-md-6">
+  				<h3>Map</h3>
+  				<div id="map"></div>
+  				<button type="button" class="btn btn-primary" onclick="addjson()">Load BFI</button>
+  				<p>Thank you.</p>
+  			</div>
+  		</div>
+  	</div>
+
+  	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  	<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  </body>
+</html>
