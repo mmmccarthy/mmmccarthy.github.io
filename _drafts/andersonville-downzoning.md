@@ -8,9 +8,9 @@ The 47th Ward Zoning Advisory Council (ZAC) and Ald. Matt Martin are considering
 I **oppose** the rezoning proposal outright. I want to address some of the points made by those backing the proposal. I feel a need to respond because the proponents are using my work to back their idea.
 
 ## Properties Affected by Rezoning
-
-<iframe src=""></iframe>
-
+Properties shown in orange on the map below would be affected by the proposal and downzoned to RS-3. Properties in blue are either already RS-3 or excluded from the downzoning because they are in B (Business) or C (Commercial) zones or a PD (Planned Development).
+<iframe src="http://mmmccarthy.github.io/html/wfcw/map.html" height="480" width="672"></iframe>
+<small>This map was created using public data from the City of Chicago. [R Source code]()</small>
 
 ## Downzoning would not Preserve Historic Buildings 
 

@@ -1,0 +1,42 @@
+---
+title: "Leaflet map"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+library(geojsonio)
+library(stringr)
+```
+
+## R Markdown
+
+```{r mapsetup, include=FALSE}
+buildingsjs <- geojsonio::geojson_read("selected_bldgs_w_zone_v2.geojson", what = "sp")
+buildings <- subset(buildingsjs, !is.na(st_name1)) # Remove garages
+pal <- colorFactor(
+  palette = c("#74add1","#74add1","#74add1","#74add1","#74add1","#e0f3f8","#fee391","#fec44f","#fe9929"),
+  levels = c("B3-2","C1-2","C2-3","C2-5","PD 460","RS-3","RT-4","RM-5","RM-6")
+  # domain = buildings$zone_class
+)
+```
+
+```{r echo=FALSE}
+m <- leaflet(buildings) %>%
+  addProviderTiles(providers$Stamen.TonerLite) %>%  # Add default OpenStreetMap map tiles
+  addPolygons(
+    stroke = FALSE, 
+    smoothFactor = 1.5, 
+    fillOpacity = 1,
+    fillColor = ~pal(zone_class),
+    popup = ~paste0("<strong>",f_add1," ",pre_dir1," ",str_to_sentence(st_name1),"</strong><br>","Zone: <strong>",zone_class,"</strong><br>","Units: <strong>",no_of_unit,"</strong><br>","Stories: <strong>",stories,"</strong><br>","Year Built: <strong>",year_built,"</strong>")
+  ) %>%
+  addLegend("topright",
+    colors = c("","#fee391","#fec44f","#fe9929","","#e0f3f8","#74add1"),
+    labels = c("<br><strong>Proposed Rezone</strong>","RT-4","RM-5","RM-6","<br><strong>No Change</strong>","RS-3","B, C, and PDs"),
+    title = "Zoning Districts",
+    opacity = 1
+  )
+m #print map
+```
