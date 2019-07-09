@@ -8,6 +8,14 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+# Build settings
+theme: jekyll-theme-hydeout
+remote_theme: fongandrew/hydeout
+
 # Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
@@ -18,17 +26,22 @@ title: Michael McCarthy
 description: >- # this means to ignore newlines until "baseurl:"
   Hi, I'm Michael. I study Urban Planning and work to solve complex problems in cities. As much as possible, I'd like to apply code and web design to my research and 
   planning work.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: '/' # the subpath of your site, e.g. /blog
+url: https://mmmccarthy.github.io
+author:
+  name: 'Michael McCarthy'
 twitter_username: mmmccarthy
 github_username: mmmccarthy
 
-# Build settings
-markdown: kramdown
-theme: jekyll-theme-hydeout
-remote_theme: fongandrew/hydeout
+paginate: 5
+
 plugins:
   - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+# Sidebar link settings
+sidebar_home_link:  true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

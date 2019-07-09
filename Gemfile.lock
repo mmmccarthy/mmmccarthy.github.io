@@ -77,8 +77,8 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 3.7.4)
   jekyll-feed (~> 0.6)
-  jekyll-theme-hydeout (~> 3.3)
+  jekyll-theme-hydeout (~> 3.4)
   tzinfo-data
 
 BUNDLED WITH
-   1.16.1
+   2.0.2
