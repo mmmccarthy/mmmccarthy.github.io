@@ -7,7 +7,7 @@ tag: journalism
 
 Unveiled in late 2011, the 5000 series rail car has become more visible on the CTA as the cars continue to be manufactured and placed in service. The new cars have electronic displays, added technology for those with disabilities and inward-facing seats.
 
-![](http://michaelmcc.com/blog/wp-content/uploads/redline.png)
+![](/assets/redline.png)
 <small>A Red Line train to 95th leaves the Belmont station in Lincoln Park. Bright electronic destination signs are a distinguishing feature of the new 5000 series rail cars.</small>
 
 El riders generally prefer the brighter, cleaner 5000 series rail cars to older models, according to Chicago Transit Authority officials.
