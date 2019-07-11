@@ -31,7 +31,7 @@ url: https://mmmccarthy.github.io
 author:
   name: 'Michael McCarthy'
 twitter_username: mmmccarthy
-github_username: mmmccarthy
+# github_username: mmmccarthy
 
 paginate: 5
 
