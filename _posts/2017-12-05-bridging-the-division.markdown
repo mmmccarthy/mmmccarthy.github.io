@@ -17,27 +17,19 @@ We observed major differences in street width and configuration, land use, and n
 
 <iframe src="{{ "/html/division/map_zones.html" | relative_url }}" height="500" width="700" frameBorder="0"></iframe>
 
-- **Zone A** from Ashland to Noble 
-    ![]({{ "/assets/division/zonea.png" | relative_url }})
+I focused on **Zone B**, which includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines (pictured below).
 
-- **Zone B** from Noble to Elston
-    ![Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines]({{ "/assets/division/zoneb_typical.jpg" | relative_url }})
-    *Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines*
-
-- **Zone C** from Elston to Halsted
-    ![Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines]({{ "/assets/division/zoneb_typical.jpg" | relative_url }})
-    *Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines*
-
-- **Zone D** from Halsted to Orleans
-    ![Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines]({{ "/assets/division/zoneb_typical.jpg" | relative_url }})
-    *Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines*
-
+![Zone B includes underpasses for the Kennedy Expressway and the Metra/Union Pacific North and Northwest lines](/assets/division/zoneb_typical.jpg)
 
 In our observations, many bicyclists were already using Division, which has comfortable bike lanes west of the study area. However, we also saw bicyclists using the sidewalks to get around congested segments near the Kennedy Expressway and to avoid railroad tracks on Goose Island.
 
-Overall, we found that new bike lanes through most of the corridor could be accomodated by slimming existing wide traffic lanes. We proposed making sidewalks more comfortable by extending the Wicker Park/Bucktown Special Service Area (SSA) to add street furniture and improve maintenance of the area in the short term. Over the long term, we acknowledged that a transformation of the pedestrian experience will require allowing and encouraging pedestrian-oriented future land uses.
+Overall, we found that new bike lanes through most of the corridor could be accomodated by slimming existing wide traffic lanes. We proposed making sidewalks more comfortable by extending the Wicker Park/Bucktown Special Service Area (SSA) to add street furniture and improve maintenance of the western part of the project corridor. Over the long term, we acknowledged that a transformation of the pedestrian experience will require allowing and encouraging pedestrian-oriented land uses in the future.
 
 ![Noble to Elston Recommendations]({{ "/assets/division/zoneb_strategies.png" | relative_url }})
+
+All recommendations for every zone are summarized below:
+
+![Implementation timeline](/assets/division/timeline.png)
 
 ## Download the Plan
 ![Bridging the Division Cover Page]({{ "/assets/division/cover.png" | relative_url }})

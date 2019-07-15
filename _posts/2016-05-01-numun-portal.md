@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "NUMUN Portal"
-date:       2016-04-01 12:00:00 -0600
+title:      "NUMUN Portal for online conference registration and more"
+date:       2016-05-01 12:00:00 -0600
 permalink:  /numun/
 category:   projects
 tags:       [web development, php]
