@@ -35,6 +35,11 @@ The proponents want to preserve the neighborhood character of Andersonville, whi
 
 The city’s Building Footprints dataset (which admittedly excludes some of the properties in question and is not fully reliable) shows that buildings in the proposed re-zone typically have 2 to 12 units (first to third quartile) with an average of 9 units due to the presence of some very large buildings. If the downzoning were approved, I believe many of these smaller multi-unit buildings would eventually be demolished and rebuilt as expensive single-family homes or deconverted. The cumulative effects of these rebuilds and deconversions with a prohibition on new multi-unit buildings are ultimately loss of population, density, and the “neighborhood character” and walkability that is so desired.
 
+In my anecdotal experience, these 3-story multi-unit buildings in the 1200 block of West Winnemac are characteristic of the surrounding blocks.
+
+![Google Street View showing 3-story residential buildings in Andersonville](/assets/wfcw/buildings1.png)
+<small>*Google Street View*</small>
+
 ## <a name="tod"></a> Transit-oriented Development
 The housing density allowed under RT-4 zoning is very supportive of high-frequency public transportation. The area considered for downzoning is between the 24-hour Red Line and the 24-hour 22 Clark bus. Additionally, the CTA plans to rebuild the Red Line structure and the Argyle station that serves this area as part of the $2.1 billion Red-Purple Modernization Phase 1 project.
 
@@ -158,7 +163,14 @@ addPolygons(
     smoothFactor = 1.5, 
     fillOpacity = 1,
     fillColor = ~pal(zone_class), # Use defined colors based on zoning district
-    popup = ~paste0("<strong>",f_add1," ",pre_dir1," ",str_to_sentence(st_name1),"</strong><br>","Zone: <strong>",zone_class,"</strong><br>","Units: <strong>",no_of_unit,"</strong><br>","Stories: <strong>",stories,"</strong><br>","Year Built: <strong>",year_built,"</strong>") # Use HTML in a "popup" and read in some shapefile attributes
+    # Use HTML in a "popup" and read in some shapefile attributes
+    popup = ~paste0(
+    "<strong>",f_add1," ",pre_dir1," ",str_to_sentence(st_name1),"</strong><br>", # Street Address
+    "Zone: <strong>",zone_class,"</strong><br>",
+    "Units: <strong>",no_of_unit,"</strong><br>",
+    "Stories: <strong>",stories,"</strong><br>",
+    "Year Built: <strong>",year_built,"</strong>"
+    ) 
 )
 ````
 
