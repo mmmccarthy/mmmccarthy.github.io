@@ -3,6 +3,8 @@ layout:     post
 title:      "DataTrack Chicago"
 date:       2013-12-01 12:00:00 -0600
 permalink:  /datatrack/
+category:   projects
+tags:       [journalism, data analysis, php]
 ---
 
 DataTrack is a data analysis tool created for *Innovation in Journalism* (Fall 2013) with Amon Jones and Tom Saxton.
