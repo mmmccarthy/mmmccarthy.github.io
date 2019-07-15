@@ -16,6 +16,6 @@ The plan looks 20 years into the future to predict and remediate negative impact
 
 > As such, the [plan document] serves as an equity plan for the communities within 64 census tracts surrounding the development site. The Resilient City Plan analyzes existing conditions, forecasts future trends, and ultimately, proposes a set of community-centric initiatives for preserving local ownership of our neighborhoods, businesses, homes and public spaces that can sustain through the year 2048 and beyond.
 
-I was part of the **Connected City** team tasked with figuring out how to accomodate an influx of new workers (such as for a new Amazon HQ or other tech hub) while mitigating issues related to transportation such as parking, loading/unloading for ride-hailing and deliveries, equity in public transportation, and safe accomodations for people walking and biking through complete streets.
+I was part of the **Connected City** team tasked with figuring out how to accommodate an influx of new workers (such as for a new Amazon HQ or other tech hub) while mitigating issues related to transportation such as parking, loading/unloading for ride-hailing and deliveries, equity in public transportation, and safe accommodations for people walking and biking through complete streets.
 
 [Download PDF (12 MB)](/assets/resilient-city-web.pdf)
