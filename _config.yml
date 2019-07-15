@@ -24,16 +24,16 @@ remote_theme: fongandrew/hydeout
 title: Michael McCarthy
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Hi, I'm Michael. I study Urban Planning and work to solve complex problems in cities. As much as possible, I'd like to apply code and web design to my research and 
-  planning work.
+  Hi, I'm Michael. I'm an urban planner working to make cities smarter, greener, safer, and more equitable, especially in the transportation field. 
 baseurl: '/' # the subpath of your site, e.g. /blog
-url: https://mmmccarthy.github.io
+url: https://michaelmcc.com
+permalink: /:categories/:title/
 author:
   name: 'Michael McCarthy'
 twitter_username: mmmccarthy
 # github_username: mmmccarthy
 
-paginate: 5
+paginate: 10
 
 plugins:
   - jekyll-feed

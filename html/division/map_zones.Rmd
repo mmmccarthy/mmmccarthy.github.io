@@ -1,0 +1,70 @@
+---
+# title: "Bridging the Division - Zones"
+theme: null
+highlight: null
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+library(leaflet.extras)
+library(geojsonio)
+library(stringr)
+```
+
+```{r datasetup, include=FALSE}
+bikeroutes <- geojsonio::geojson_read("division_nearby_bikeroutes.geojson", what = "sp")
+#buffer <- geojsonio::geojson_read("division_5min_0.8mile_buffer.geojson", what = "sp")
+zones <- geojsonio::geojson_read("division_zones.geojson", what = "sp")
+corridor <- geojsonio::geojson_read("division_corridor.geojson", what = "sp")
+```
+```{r mapsetup, include=FALSE}
+pal <- colorFactor(
+  palette = c("#7E5109","#7E5109","#85D8FC","#85D8FC","#ABEBC6","#2ECC71","#FCDE66"),
+  levels = c("ACCESS PATH","OFF-STREET TRAIL","BIKE LANE","BUFFERED BIKE LANE","NEIGHBORHOOD GREENWAY","PROTECTED BIKE LANE","SHARED-LANE")
+ #  domain = bikeroutes$bikeroute
+)
+zonepal <- colorFactor(
+  palette = topo.colors(4),
+  domain = zones$zone
+)
+```
+
+```{r echo=FALSE}
+m <- leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(
+    data = zones,
+    group = "Project Zones",
+    stroke = FALSE,
+    smoothFactor = 1,
+    fillColor = ~zonepal(zone),
+    fillOpacity = 0.4,
+    label = ~paste0(str_to_upper(zone)),
+    labelOptions = labelOptions(
+      noHide = TRUE, textOnly = TRUE, direction = "bottom", style = list(
+      'color' = 'white',
+      'font-size' = '30px',
+      'font-weight' = 'bold',
+      '-webkit-text-stroke-width' = '1.5px',
+      '-webkit-text-stroke-color' = '#CCC'
+      )
+      )
+    ) %>%
+  addPolylines(
+    data = corridor,
+    group = "Project Corridor",
+    color = "#FA3DA4",
+    opacity = 0.8,
+    weight = 8
+    ) %>%
+  setView(
+    lng = -87.652,
+    lat = 41.903512,
+    zoom = 14
+  ) %>%
+  suspendScroll(sleep = TRUE, sleepNote = FALSE, sleepOpacity = 1) # Prevents accidental zooming on Mac
+
+m #print map
+```

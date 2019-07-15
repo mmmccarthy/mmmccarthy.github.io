@@ -1,8 +1,9 @@
 ---
-layout: post
-title:  "Where the We Will dollars will be spent"
-date:   2014-05-14 12:00:00 -0600
-tag: journalism
+layout:   post
+title:    "Where the We Will dollars will be spent"
+date:     2014-05-14 12:00:00 -0600
+category: stories
+tag:      [journalism, North by Northwestern]
 ---
 <img alt="Pie chart showing Northwestern University hopes to raise $3.75 billion for 4 goals: Campus and Community, Global Connections, Discovery and Creativity, and Student Experience" src="/assets/we-will.png" width="500" />
 

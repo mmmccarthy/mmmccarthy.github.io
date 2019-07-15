@@ -1,0 +1,78 @@
+---
+title: "Bridging the Division"
+theme: null
+highlight: null
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+library(leaflet.extras)
+library(geojsonio)
+library(stringr)
+```
+
+```{r datasetup, include=FALSE}
+bikeroutes <- geojsonio::geojson_read("division_nearby_bikeroutes.geojson", what = "sp")
+buffer <- geojsonio::geojson_read("division_5min_0.8mile_buffer.geojson", what = "sp")
+corridor <- geojsonio::geojson_read("division_corridor.geojson", what = "sp")
+```
+```{r mapsetup, include=FALSE}
+pal <- colorFactor(
+  palette = c("#7E5109","#7E5109","#85D8FC","#85D8FC","#ABEBC6","#2ECC71","#FCDE66"),
+  levels = c("ACCESS PATH","OFF-STREET TRAIL","BIKE LANE","BUFFERED BIKE LANE","NEIGHBORHOOD GREENWAY","PROTECTED BIKE LANE","SHARED-LANE")
+ #  domain = bikeroutes$bikeroute
+)
+```
+
+```{r echo=FALSE}
+m <- leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(
+    data = buffer,
+    group = "Study Area",
+    stroke = TRUE,
+    weight = 3,
+    dashArray = '8, 10',
+    color = "#28B463",
+    smoothFactor = 1.5,
+    fillColor = "#ABEBC6",
+    fillOpacity = 0.1
+    ) %>%
+  addPolylines(
+    data = corridor,
+    group = "Project Corridor",
+    color = "#FA3DA4",
+    opacity = 0.8,
+    weight = 8
+    ) %>%
+  addPolylines(
+    data = bikeroutes,
+    group = "Existing Bike Routes",
+    color = ~pal(bikeroute),
+    opacity = 1,
+    weight = 3,
+    popup = ~paste0("<strong>",str_to_title(street),"</strong><br>",str_to_title(bikeroute))
+    ) %>%
+  addLegend(
+    position = "bottomleft",
+    title = "Existing Bike Routes",
+    colors = c("#7E5109","#85D8FC","#ABEBC6","#2ECC71","#FCDE66"),
+    labels = c("Off-street Trails","Standard and Buffered Bike Lanes","Neighborhood Greenways","Protected Bike Lanes","Marked Shared Lanes (\"Sharrows\")")
+    ) %>%
+  # Layers control
+  addLayersControl(
+    position = "bottomright",
+    overlayGroups = c("Existing Bike Routes","Study Area"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  setView(
+    lng = -87.649762,
+    lat = 41.903512,
+    zoom = 14
+  ) %>%
+  suspendScroll(sleep = TRUE, sleepNote = FALSE, sleepOpacity = 1) # Prevents accidental zooming on Mac
+
+m #print map
+```

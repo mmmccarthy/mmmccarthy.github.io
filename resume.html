@@ -11,13 +11,14 @@
       rel="stylesheet">-->
 
 		<style type="text/css">
-			.headline {
-				background-color: #ccc;
-				color: white;
-				padding-top: 8rem;
-				padding-bottom: 1rem;
+			.headline h1 {
+				color: #333;
+				padding-top: 3rem;
+				padding-bottom: 0.5rem;
+				margin-bottom: 3rem;
 				margin-left: 0px;
 				margin-right: 0px;
+				border-bottom: 3px solid #555;
 			}
 			
 			.material-icons.md-dark {
@@ -51,16 +52,16 @@
 	<div class="container-fluid">
 		<div class="headline">
 				<h1>Michael McCarthy</h1>
-			</div>
+		</div>
 	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
-				<h3 id="section-education" class="text-muted">Education</h3>
+				<h3 id="section-education">Education</h3>
 				<div class="col">
 					<div class="card my-3">
 						<div class="card-header text-muted">
-							August 2017 to present <em>(expected graduation May 2019)</em>
+							August 2017 to May 2019</em>
 						</div>
 						<div class="card-body">
 			    			<h3 class="card-title">Master of Urban Planning and Policy</h3>
@@ -69,7 +70,7 @@
 								<li>Concentration in Urban Transportation
 									<ul class="d-none see-more-mupp">
 										<li><strong>Implementing Complete Streets</strong> &mdash; Created a plan for a better experience walking, biking, or taking transit through Goose Island on Division Street in Chicago.<br><span class="text-muted">Instructors: Nate Roseberry and Gerardo Garcia</span></li>
-										<li><strong>Plan-making Studio (UPP 505/506)</strong> &mdash; Created a plan for neighborhoods around <em>The 78</em> mega-development along the Chicago River between Roosevelt and 15th. 
+										<li><strong>Plan-making Studio (UPP 505/506)</strong> &mdash; Created a plan for neighborhoods around <em>The 78</em> mega-development along the Chicago River between Roosevelt and 15th.
 									</ul>
 								</li>
 								<li>Public Transit Planning and Management Certificate
@@ -79,7 +80,7 @@
 									</ul>
 								</li>
 							</ul>
-							<a href="#" class="btn btn-primary" id="display-see-more-mupp">See more/See less</a>
+							<a href="#" class="btn btn-primary see-more" id="disp-see-more-mupp" data-display=".see-more-mupp">See more/See less</a>
 						</div>
 					</div>
 
@@ -94,17 +95,23 @@
 			    			</h4>
 							<ul class="lead">
 								<li>Concentrations in History and Sociology
-									<ul class="d-none see-more-bsj">
+									
 										<li><strong>Innovation in Journalism</strong>
 									</ul>
 								</li>
+								<li>Innovation in Journalism (Computer Science &plus; Journalism
+									<ul class="d-none see-more-bsj">
+										<li>Project: <a href="/datatrack"><strong>DataTrack Chicago</strong></a>
+									</ul>
+								</li>
 							</ul>
-							<a href="#" class="btn btn-primary" id="display-see-more-bsj">See more/See less</a>
+							
+							<button class="btn btn-primary see-more" id="disp-see-more-bsj" data-display=".see-more-bsj">See more/See less</button>
 						</div>
 					</div>
 				</div>
 
-				<h3 class="text-muted">Experience</h3>
+				<h3>Experience</h3>
 				<div class="col">
 					<div class="card my-3">
 						<div class="card-header text-muted">
@@ -217,5 +224,16 @@
 					</div>
 			</div>
 	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".see-more").click(function(){
+			item = $(this).data("display");
+			$(item).toggleClass("d-none");
+		});
+	});
+	</script>
+
 </body>
 </html>

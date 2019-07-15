@@ -1,8 +1,9 @@
 ---
-layout: post
-title:  "Chicago&apos;s growing urban agriculture"
-date:   2013-06-05 12:35:00 -0600
-tag: journalism
+layout:   post
+title:    "Chicago&apos;s growing urban agriculture"
+date:     2013-06-05 12:35:00 -0600
+category: stories
+tag:      [journalism, class assignment]
 ---
 
 John Edel has a plan for the future of food production. Farmers raise tilapia and grow lettuce in the basement with grow lights and aquaponics. Beer is brewed on the first floor. Two bakeries and a tea drink company occupy other floors. Separately, they each produce food and, with it, plenty of food waste. The building as a whole, however, produces just as much energy as it uses and there is little waste.

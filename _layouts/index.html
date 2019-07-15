@@ -32,7 +32,15 @@ layout: default
       {% endcapture %}
 
       {% if content_words != excerpt_words %}
-        <a href="{{ post.url | relative_url }}">More &hellip;</a>
+        {% if post.video_url %}
+          {% if post.video_provider %}
+            <a href="{{ post.video_url }}" target="_blank">Watch at {{post.video_provider}}</a>
+          {% else %}
+            <a href="{{ post.video_url }}" target="_blank">Watch video</a>
+          {% endif %}
+        {% else %}
+          <a href="{{ post.url | relative_url }}">Read more&hellip;</a>
+        {% endif %}
       {% endif %}
     {% endif %}
   </article>

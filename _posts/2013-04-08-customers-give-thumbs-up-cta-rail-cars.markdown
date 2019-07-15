@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Customers give thumbs up to new CTA rail cars"
-date:   2014-03-30 22:25:55 -0600
-tag: journalism
+date:   2013-03-30 22:25:55 -0600
+category: stories
+tag:    [journalism, class assignment]
 ---
 
 Unveiled in late 2011, the 5000 series rail car has become more visible on the CTA as the cars continue to be manufactured and placed in service. The new cars have electronic displays, added technology for those with disabilities and inward-facing seats.
