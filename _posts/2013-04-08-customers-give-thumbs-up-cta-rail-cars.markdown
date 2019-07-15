@@ -17,7 +17,7 @@ The CTA officially launched the 5000 series into service in late 2011 after seve
 
 The cars debuted in November 2012 on the Red Line, which has the highest ridership in the system with about 250,000 customers a day, according to the agency.
 
-> Although the transit agency has not conducted a survey, the majority of customer feedback has been positive, said Lambrini Lukidis, the CTA Spokeswoman.
+Although the transit agency has not conducted a survey, the majority of customer feedback has been positive, said Lambrini Lukidis, the CTA Spokeswoman.
 
 “I love them,” said Jenny Smith while waiting for a Green Line train at the Clark/Lake station in the Loop. 
 
