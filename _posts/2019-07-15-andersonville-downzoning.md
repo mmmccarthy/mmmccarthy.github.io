@@ -15,7 +15,7 @@ Here's the proposal:
 ## <a name="properties-map"></a> Properties Affected by Rezoning
 The map below shows properties affected by the proposal in orange. All of these buildings would be downzoned to RS-3. Properties in blue are either already RS-3 or excluded from the downzoning because they are in B (Business) or C (Commercial) districts or a PD (Planned Development).
 
-<iframe src="{{ "/html/wfcw/map.html" | relative_url }}" height="480" width="672"></iframe>
+<iframe src="{{ "/html/wfcw/map.html" | relative_url }}" height="480" width="672" frameborder="0"></iframe>
 
 <small>*Note: The city's buildings dataset is not reliably accurate. Some buildings are listed with zero stories or units.*</small>
 
@@ -91,7 +91,7 @@ The relevant [zoning specifications](https://secondcityzoning.org/zoning_rules/)
 |Lot area per unit (density)    |2,500 sq ft                 |
 |Minimum lot area               |2,500 sq ft                 |
 
-You'll notice that the **minimum lot area** and the **lot area required per unit** are the same. This means only one unit is allowed. However, there is the following exception:
+You'll notice that the **lot area required per unit** is larger than in the RT-4 district. A "standard Chicago lot" of 125&times;25 feet or 3,125 sq ft. in an RS-3 district can only be a single-family home. However, there is the following exception for a two-flat:
 
 > **17-2-0303-B Exemption**
 >
