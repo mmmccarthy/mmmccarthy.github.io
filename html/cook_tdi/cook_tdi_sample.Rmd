@@ -1,0 +1,156 @@
+---
+title: "Cook County Transit Dependency Index"
+output: html_document
+---
+
+This map shows relative transit dependency for households in Cook County without cars, based on the TDI developed by Chase and Quan (2014).
+
+```{r include = FALSE}
+# Setup
+
+library(censusapi)
+library(dplyr)
+library(tigris)
+library(leaflet)
+library(leaflet.extras)
+#library(knitr)
+
+# REMOVE
+Sys.setenv(CENSUS_KEY="<API KEY>")
+```
+```{r include = FALSE}
+# Data Download
+
+# Download 5-year 2012-2017 American Community Survey for Cook County (FIPS: 031) Block Groups
+cook <- getCensus(name = "acs/acs5", vintage = 2017, vars = c("B01003_001E","B25044_001E","B25044_003E","B25044_010E","B01001_005E","B01001_006E","B01001_020E","B01001_021E","B01001_022E","B01001_023E","B01001_024E","B01001_025E","B01001_029E","B01001_030E","B01001_044E","B01001_045E","B01001_046E","B01001_047E","B01001_048E","B01001_049E","B17021_002E","B02001_002E"), region = "block group:*", regionin = "state:17+county:031+tract:*")
+```
+```{r include = FALSE}
+# Compute Ranks
+
+# Rename ACS Variables
+cook <- rename(cook, 
+              poptotal = B01003_001E, # Total Population
+              hhtotal = B25044_001E, # Households
+              hh0car_own = B25044_003E, # Households with no vehicles available / own home
+              hh0car_rent = B25044_010E, # Households with no vehicles available / rent home
+              m10_14 = B01001_005E, # Males 10-14
+              m15_17 = B01001_006E,
+              m65_66 = B01001_020E,
+              m67_69 = B01001_021E,
+              m70_74 = B01001_022E,
+              m75_79 = B01001_023E,
+              m80_84 = B01001_024E,
+              m85plus = B01001_025E,
+              f10_14 = B01001_029E, # Females 10-14
+              f15_17 = B01001_030E,
+              f65_66 = B01001_044E,
+              f67_69 = B01001_045E,
+              f70_74 = B01001_046E,
+              f75_79 = B01001_047E,
+              f80_84 = B01001_048E,
+              f85plus = B01001_049E,
+              pov_indiv = B17021_002E, # Individuals living in poverty
+              white_pop = B02001_002E # Population identifying as only White
+              )
+
+# Sum Population Groups
+cook <- mutate(cook, geoid = paste(state,county,tract,block_group, sep = ""), 
+               nocar = hh0car_own + hh0car_rent, 
+               older = m65_66 + m67_69 + m70_74 + m75_79 + m80_84 + m85plus + f65_66 + f67_69 + f70_74 + f75_79 + f80_84 + f85plus, 
+               youth = m10_14 + m15_17 + f10_14 + f15_17, 
+               nonwhite_pop = poptotal - white_pop
+               )
+
+# Compute County-level Means or Study Area Averages (SAA)
+cookmeans <- data.frame(nocarmean = mean(cook$nocar), oldermean = mean(cook$older), youthmean = mean(cook$youth), minoritymean = mean(cook$nonwhite_pop), povertymean = mean(cook$pov_indiv))
+
+# - Rank Definitions
+#   1 - < SAA                 Less Transit Dependent
+#   2 - SAA to 1.33 x SAA
+#   3 - 1.33 to 1.67 x SAA
+#   4 - 1.67 to 2 x SAA
+#   5 - > 2 x SAA             More Transit Dependent
+
+# Compute Ranks by Block Group
+cookrank <- cook
+cookrank <- mutate(cookrank, nocarrank = ifelse(
+  nocar %>% between(cookmeans$nocarmean,(1.33*cookmeans$nocarmean)), 2,
+  ifelse(nocar %>% between((1.33*cookmeans$nocarmean),(1.67*cookmeans$nocarmean)), 3,
+  ifelse(nocar %>% between((1.67*cookmeans$nocarmean),(2*cookmeans$nocarmean)), 4,
+  ifelse(nocar > (2*cookmeans$nocarmean), 5, 1)))))
+
+cookrank <- mutate(cookrank, olderrank = ifelse(
+  older %>% between(cookmeans$oldermean,(1.33*cookmeans$oldermean)), 2,
+  ifelse(older %>% between((1.33*cookmeans$oldermean),(1.67*cookmeans$oldermean)), 3,
+  ifelse(older %>% between((1.67*cookmeans$oldermean),(2*cookmeans$oldermean)), 4,
+  ifelse(older > (2*cookmeans$oldermean), 5, 1)))))
+
+cookrank <- mutate(cookrank, youthrank = ifelse(
+  youth %>% between(cookmeans$youthmean,(1.33*cookmeans$youthmean)), 2,
+  ifelse(youth %>% between((1.33*cookmeans$youthmean),(1.67*cookmeans$youthmean)), 3,
+  ifelse(youth %>% between((1.67*cookmeans$youthmean),(2*cookmeans$youthmean)), 4,
+  ifelse(youth > (2*cookmeans$youthmean), 5, 1)))))
+
+cookrank <- mutate(cookrank, minorityrank = ifelse(
+  nonwhite_pop %>% between(cookmeans$minoritymean,(1.33*cookmeans$minoritymean)), 2,
+  ifelse(nonwhite_pop %>% between((1.33*cookmeans$minoritymean),(1.67*cookmeans$minoritymean)), 3,
+  ifelse(nonwhite_pop %>% between((1.67*cookmeans$minoritymean),(2*cookmeans$minoritymean)), 4,
+  ifelse(nonwhite_pop > (2*cookmeans$minoritymean), 5, 1)))))
+
+cookrank <- mutate(cookrank, povertyrank = ifelse(
+  pov_indiv %>% between(cookmeans$povertymean,(1.33*cookmeans$povertymean)), 2,
+  ifelse(pov_indiv %>% between((1.33*cookmeans$povertymean),(1.67*cookmeans$povertymean)), 3,
+  ifelse(pov_indiv %>% between((1.67*cookmeans$povertymean),(2*cookmeans$povertymean)), 4,
+  ifelse(pov_indiv > (2*cookmeans$povertymean), 5, 1)))))
+```
+```{r include = FALSE}
+# Get Shapefile (tigris/block_groups)
+cookbg <- block_groups(state = '17', county = '031', cb = TRUE, year = 2017)
+```
+```{r echo = FALSE}
+# Join TDI to Block Group polygons
+tdi_geo <- geo_join(cookbg, cookrank, "GEOID", "geoid")
+
+# Variable to Map
+map_var <- cookrank$nocarrank
+map_var_title <- "Households without Cars"
+
+# Color Palette
+pal <- colorFactor(
+  palette = "YlGnBu",
+  domain = cookrank$nocarrank
+)
+```
+```{r echo = FALSE}
+# Map
+m <- leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolygons(data = tdi_geo,
+              fillColor = ~pal(nocarrank), 
+              fillOpacity = 1,
+              stroke = FALSE,
+              popup = ~paste0("<strong>Block Group ",geoid,"</strong><br>Indices<br>No Car: ",nocarrank,"<br>Older: ",olderrank,"<br>Youth: ",youthrank,"<br>Minority: ",minorityrank,"<br>Poverty: ",povertyrank)
+  ) %>%
+  addLegend(
+      pal = pal, 
+      values = cookrank$nocarrank, 
+      position = "bottomleft",
+      title = paste0("Transit Dependency Index<br/>",map_var_title)
+  ) %>%
+  
+  setView(
+    lng = -87.787395,
+    lat = 41.842408,
+    zoom = 10
+  ) %>%
+  
+  suspendScroll(sleep = TRUE, sleepNote = FALSE, sleepOpacity = 1) # Prevents accidental zooming on Mac
+
+m # print map
+```
+
+#### References
+
+Chase, H. & Quan, J. (2014). Visualizing Transit Need [PDF Presentation Slides]. KFH Group, Inc. Retrieved from [acsdatacommunity.prb.org (PDF)](https://acsdatacommunity.prb.org/cfs-file/__key/widgetcontainerfiles/3fc3f82483d14ec485ef92e206116d49-s-AAAAAAAAAAAAAAAAAAAAAA-page-02014_5F00_acs_5F00_conference/Chase.pdf).
+
+
