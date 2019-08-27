@@ -1,0 +1,87 @@
+---
+title: "Vision Zero in the 47th Ward"
+theme: null
+highlight: null
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RSocrata)
+library(leaflet)
+library(leaflet.extras)
+library(geojsonio)
+library(stringr)
+
+Sys.setenv("APP_TOKEN" = "7KdJrXcZIfcEAoeRO79eIe4gH")
+```
+
+```{r datasetup, include=FALSE}
+bikeroutes <- geojsonio::geojson_read("geodata/nearby_bikeroutes.geojson", what = "sp")
+
+# Get Crashes from Chicago Data Portal
+# within box from Foster & the Chicago River to Belmont and Sheffield - $where=within_box(location, 41.975775, -87.706043, 41.939900, -87.654099)&
+# query <- "https://data.cityofchicago.org/resource/85ca-t3if.json?$where=within_box(location, 41.975775, -87.706043, 41.939900, -87.654099) AND most_severe_injury != 'NO INDICATION OF INJURY'"
+query <- "https://data.cityofchicago.org/resource/85ca-t3if.json?$where=within_box(location, 41.975775, -87.706043, 41.939900, -87.654099) AND first_crash_type == 'PEDALCYCLIST'"
+crashes <- read.socrata(query, app_token = Sys.getenv("APP_TOKEN"))
+# Fix Lat/Long for use with Leaflet
+crashes$latitude = as.numeric(crashes$latitude)
+crashes$longitude = as.numeric(crashes$longitude)
+# buffer <- geojsonio::geojson_read("division_5min_0.8mile_buffer.geojson", what = "sp")
+# corridor <- geojsonio::geojson_read("division_corridor.geojson", what = "sp")
+```
+```{r mapsetup, include=FALSE}
+pal <- colorFactor(
+  palette = c("#7E5109","#7E5109","#85D8FC","#85D8FC","#ABEBC6","#2ECC71","#FCDE66"),
+  levels = c("ACCESS PATH","OFF-STREET TRAIL","BIKE LANE","BUFFERED BIKE LANE","NEIGHBORHOOD GREENWAY","PROTECTED BIKE LANE","SHARED-LANE")
+ #  domain = bikeroutes$bikeroute
+)
+
+injurypal <- colorFactor(
+  palette = c("#d7301f","#fc8d59","#999999","#fdcc8a","#fef0d9","#999999"),
+  domain = as.factor(crashes$most_severe_injury)
+)
+```
+
+```{r echo=FALSE}
+m <- leaflet() %>%
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  addPolylines(
+    data = bikeroutes,
+    group = "Existing Bike Routes",
+    color = ~pal(bikeroute),
+    opacity = 0.5,
+    weight = 3,
+    popup = ~paste0("<strong>",str_to_title(street),"</strong><br>",str_to_title(bikeroute))
+    ) %>%
+  addCircleMarkers(
+    data = crashes,
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = ~ifelse(most_severe_injury == "FATAL", 10, 4),
+    stroke = FALSE,
+    fillColor = ~injurypal(as.factor(most_severe_injury)),
+    fillOpacity = 2,
+    popup = ~paste0("<strong>",street_no," ",street_direction," ",str_to_title(street_name),"</strong><br>Date: ",format(crash_date, format = "%b %d, %Y"),"<br>Type: ",str_to_title(first_crash_type),"<br>Most severe injury: ",str_to_title(most_severe_injury))
+  ) %>%
+  addLegend(
+    position = "bottomleft",
+    title = "Existing Bike Routes",
+    colors = c("#7E5109","#85D8FC","#ABEBC6","#2ECC71","#FCDE66"),
+    labels = c("Off-street Trails","Standard and Buffered Bike Lanes","Neighborhood Greenways","Protected Bike Lanes","Marked Shared Lanes (\"Sharrows\")")
+    ) %>%
+  # Layers control
+  addLayersControl(
+    position = "bottomright",
+    overlayGroups = c("Existing Bike Routes"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  setView(
+    lng = -87.677782,
+    lat = 41.956884,
+    zoom = 14
+  ) %>%
+  suspendScroll(sleep = TRUE, sleepNote = FALSE, sleepOpacity = 1) # Prevents accidental zooming on Mac
+
+m #print map
+```
