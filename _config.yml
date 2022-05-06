@@ -13,7 +13,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Build settings
-theme: jekyll-theme-hydeout
+# theme: jekyll-theme-hydeout
 remote_theme: fongandrew/hydeout
 
 # Site settings
