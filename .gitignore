@@ -5,3 +5,4 @@ _site
 !assets
 html/chivz_archive/*
 **/.DS_Store
+.ruby-version
