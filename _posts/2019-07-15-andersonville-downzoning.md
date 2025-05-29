@@ -2,6 +2,7 @@
 layout: post
 title:  "Proposed Andersonville downzoning: Who's affected and what could happen?"
 date:   2019-07-15 12:00:00 -0600
+category: blog
 tags:   [zoning and development]
 ---
 
