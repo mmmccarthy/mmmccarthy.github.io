@@ -30,11 +30,11 @@ When this second snippet runs, `year` is often pointing to the string "2020" and
 
 I had plans to get dinner and drinks with friends on a Friday and texted the group that I had a fun computer bug to tell them about. I nearly forgot but my scheme worked and my friend Desmond asked me about the bug.
 
-This is is also GISDK, and it's a little gnarlier. It's gone undetected for at least 5 years, probably more. 
-
-This one has a lot to do with an abstraction in travel demand modeling called external zones. Travel analysis zones (TAZs) aggregate the travel behavior of hundreds or thousands of people living or working in a particular neighborhood or set of blocks. Models need a way to represent traffic that is coming in, going out, or passing through their region without also representing the people and households of every area these trips might start or end in. External zones truncate trips at major roads around a cordon of the modeled region and aggregate all trips starting or ending on a particular corridor. These external zones don't typically have any data about the number of people or households attached to them.
+This one has a lot to do with an abstraction in travel demand modeling called external zones. Travel analysis zones (TAZs) aggregate the travel behavior of hundreds or thousands of people living or working in a particular neighborhood or set of blocks. Models need a way to represent trips coming in, going out, or passing through their region without also representing the people and households of every possible outside destination. External zones truncate trips at major roads around a cordon of the modeled region and aggregate all trips starting or ending on a particular corridor.
 
 A client asked us why his regional model was reporting the wrong number of households in the model. It seemed like such a basic thing to calculate in a model, so I went to check the code that writes out this number.
+
+This is is also GISDK, and it's a little gnarlier. It's gone undetected for at least 5 years, probably more. 
 
 ```
 // HH1, HH2, HH3, HH4 are vectors of the values for fields in the TAZ households data
@@ -50,7 +50,7 @@ for ii = 1 to numTAZ do
 end
 ```
 
-Think of tabular data that you might calculate in Excel. You have a table of households by size, perhaps from the Census. TAZ is traffic analysis zone, an abstraction I should have told you about earlier. Most zones are internal with defined geography and a known number of people and households. These zones are used to generate aggreate trips made by all people living or working within the defined zone.
+Think of tabular data that you might calculate in Excel. You have a table of households by size, perhaps from the Census, aggregated into TAZs.
 
 | TAZ | HH1 | HH2 | HH3 | HH4 |
 |:---:|:---:|:---:|:---:|:---:|
@@ -58,7 +58,7 @@ Think of tabular data that you might calculate in Excel. You have a table of hou
 |102|178|400|53|70|
 |103|0|0|0|0|
 
-Since we only have households by size, we need to sum four columns and then take the sum of total households in each row. This script does just that by looping through each row, calculating total households, and adding to a running total of households.
+Since we only have households by size here, we need to sum the four HH columns and then get the sum of total households in each row. This script does just that by looping through each row, calculating total households, and adding to a running total of households.
 
 But the external zones I mentioned previously come in here. This particular scenario's TAZ file used null values for the external zones. Modelers tend to list the external zones at the bottom of the table and give them high ID numbers to distinguish them from internal zones.
 
@@ -68,6 +68,7 @@ But the external zones I mentioned previously come in here. This particular scen
 |902|-|-|-|-|
 |903|-|-|-|-|
 
+The problem was that these zones were at the top of the table and had null values. The count statistic from the HH1 vector on line 2 returns a number that is a bit lower than the actual number of zones, because the nulls don't count. But their position first in the table means these rows are included in the loop and get summed first, adding zero households. However, the last 50 or so zones in the table are not summed. Those last zones in the table were being skipped over because the loop is limitedto the number of rows with a value for HH1. 
 
 
 
