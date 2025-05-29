@@ -3,7 +3,7 @@ layout: post
 title:  "Chicago has already reached 3 bicyclist deaths in 2022, much earlier than in previous years"
 date:   2022-05-05 21:00:00 -0600
 permalink:  /chicago-reached-3-cyclist-deaths-earlier-than-previous-years/
-categories: projects
+categories: blog
 tags:       [Vision Zero, safety, complete streets]
 ---
 
